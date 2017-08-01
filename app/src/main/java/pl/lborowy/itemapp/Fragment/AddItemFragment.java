@@ -11,6 +11,7 @@ import android.widget.EditText;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.realm.Realm;
 import pl.lborowy.itemapp.R;
 
 public class AddItemFragment extends DialogFragment implements AddItemContract.View{
@@ -21,6 +22,7 @@ public class AddItemFragment extends DialogFragment implements AddItemContract.V
     EditText description;
 
     private AddItemContract.Presenter addItemPresenter;
+    private Realm realm;
 
     public AddItemFragment() {
         // Required empty public constructor
@@ -39,12 +41,13 @@ public class AddItemFragment extends DialogFragment implements AddItemContract.V
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         addItemPresenter = new AddItemPresenter(this);
+        realm = Realm.getDefaultInstance();
     }
 
     @OnClick(R.id.add_item_button_save)
     public void onSaveButtonClicked() {
         // przekazywanie prezenterowi o kliknieciu przycisku
-        addItemPresenter.saveItem();
+        addItemPresenter.saveItem(realm);
     }
 
 
