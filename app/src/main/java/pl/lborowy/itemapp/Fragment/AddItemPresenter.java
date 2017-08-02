@@ -37,12 +37,15 @@ public class AddItemPresenter implements AddItemContract.Presenter {
     }
 
     private void saveItemToRealm(Realm realm, final Item item) {
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-
-                realm.copyToRealm(item);
-            }
-        });
+//        realm.executeTransaction(new Realm.Transaction() {
+//            @Override
+//            public void execute(Realm innerRealm) {
+//
+//                innerRealm.copyToRealm(item);
+//            }
+//        });
+        // lambdą..
+        realm.executeTransaction(
+                innerRealm -> innerRealm.copyToRealm(item));
     }
 }
