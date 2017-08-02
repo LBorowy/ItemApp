@@ -7,12 +7,14 @@ import android.os.Bundle;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import pl.lborowy.itemapp.Fragment.AddItemFragment;
 
 
 public class MainActivity extends AppCompatActivity implements MainContract.View{
 
     @BindView(R.id.main_activity_fab)
     FloatingActionButton floatingActionButton;
+    private MainContract.Presenter mainPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,16 +24,19 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
         // cała logika idzie do Presentera
 
+        mainPresenter = new MainPresenter(this); // 1 prezenter przypisany do całego Activity
+
+
     }
 
     @OnClick(R.id.main_activity_fab)
     public void onFabPressed() {
-
+        mainPresenter.onOpenDialogPressed();
     }
-
 
     @Override
     public void openAddDialog() {
-
+        // tu jest nasze View
+        AddItemFragment.newInstance().show(getSupportFragmentManager(), "");
     }
 }

@@ -28,6 +28,10 @@ public class AddItemFragment extends DialogFragment implements AddItemContract.V
         // Required empty public constructor
     }
 
+    public static AddItemFragment newInstance() { // metoda statyczna nie wymaga obiektu
+        return new AddItemFragment();
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
