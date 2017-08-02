@@ -29,4 +29,8 @@ public class Item extends RealmObject{
         this.description = description;
         this.insertionDate = insertionDate;
     }
+
+    public int getId() {
+        return id;
+    }
 }
