@@ -23,14 +23,17 @@ public class AddItemPresenter implements AddItemContract.Presenter {
         final String name = view.getItemName();
         final String description = view.getItemDescription();
 
+        // zapisywanie obiektu do Realmu
+        final Item item = new Item(-1, name, description, new Date().getTime());
+        saveItemToRealm(realm, item);
+
+        // taka forma zapisywania lub tak jak w metodzie saveItemToRealm
 //        realm.beginTransaction();
 //        Item item = new Item(-1, name, description, new Date().getTime());
 //        realm.copyToRealm(item);
 //        realm.commitTransaction();
 
-        final Item item = new Item(-1, name, description, new Date().getTime());
 
-        saveItemToRealm(realm, item);
     }
 
     private void saveItemToRealm(Realm realm, final Item item) {
