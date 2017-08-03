@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     FloatingActionButton floatingActionButton;
 
     private MainContract.Presenter mainPresenter;
+    private ItemsListFragment itemsListFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         // cała logika idzie do Presentera
 
         mainPresenter = new MainPresenter(this); // 1 prezenter przypisany do całego Activity
+        itemsListFragment = ItemsListFragment.newIstance(); // inicjalizacja
+        mainPresenter.onViewInitialized(); // inicjalizacja
 
         // adapter cd pokazywanie
         ItemsListFragment itemsListFragment = ItemsListFragment.newIstance();
@@ -50,5 +53,14 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public void openAddDialog() {
         // tu jest nasze View
         AddItemFragment.newInstance().show(getSupportFragmentManager(), "");
+    }
+
+    @Override
+    public void showList() {
+        // adapter cd pokazywanie
+        getFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_activity_container, itemsListFragment)
+                .commit();
     }
 }

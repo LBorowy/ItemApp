@@ -7,10 +7,14 @@ package pl.lborowy.itemapp;
 public interface MainContract {
 
     interface Presenter {
+        void onViewInitialized();
+
         void onOpenDialogPressed();
     }
 
     interface View {
         void openAddDialog();
+
+        void showList();
     }
 }
