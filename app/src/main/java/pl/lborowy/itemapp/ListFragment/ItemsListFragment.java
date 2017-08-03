@@ -1,9 +1,11 @@
 package pl.lborowy.itemapp.ListFragment;
 
 
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.realm.Realm;
 import io.realm.RealmResults;
+import pl.lborowy.itemapp.Adapter.ItemsListAdapter;
 import pl.lborowy.itemapp.Model.Item;
 import pl.lborowy.itemapp.R;
 
@@ -50,5 +53,9 @@ public class ItemsListFragment extends Fragment {
         realm = Realm.getDefaultInstance();
         // pobieranie rzeczy z realma
         RealmResults<Item> items = realm.where(Item.class).findAll();
+
+        // adapter cd
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(new ItemsListAdapter(items));
     }
 }
