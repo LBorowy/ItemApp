@@ -23,4 +23,9 @@ public class MainPresenter implements MainContract.Presenter {
         // tutaj nie możemy odpalić dialogu -> lecimy do View (MainActivity - openAddDialog());
         view.openAddDialog();
     }
+
+    @Override
+    public void onDialogDismissed() {
+
+    }
 }

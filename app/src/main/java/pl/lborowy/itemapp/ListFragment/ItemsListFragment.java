@@ -58,4 +58,9 @@ public class ItemsListFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(new ItemsListAdapter(items));
     }
+
+    public void refreshList() {
+        RealmResults<Item> items = realm.where(Item.class).findAll();
+        recyclerView.setAdapter(new ItemsListAdapter(items));
+    }
 }

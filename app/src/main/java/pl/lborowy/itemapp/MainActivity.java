@@ -3,7 +3,6 @@ package pl.lborowy.itemapp;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.FrameLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -12,7 +11,7 @@ import pl.lborowy.itemapp.Fragment.AddItemFragment;
 import pl.lborowy.itemapp.ListFragment.ItemsListFragment;
 
 
-public class MainActivity extends AppCompatActivity implements MainContract.View{
+public class MainActivity extends AppCompatActivity implements MainContract.View, AddDialogInterface{
 
 
 
@@ -62,5 +61,17 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
                 .beginTransaction()
                 .replace(R.id.main_activity_container, itemsListFragment)
                 .commit();
+    }
+
+    @Override
+    public void refreshList() {
+        itemsListFragment.refreshList();
+    }
+
+    @Override
+    public void onDialogDismiss() {
+        // w momencie, kiedy dialog sie zamknie powinniśmy powiadomic presenter, ze zostal zamkniety
+        // dialog -> Activity -> Presenter -> powrót do Activity (zamknij dialog)
+        mainPresenter.onDialogDismissed();
     }
 }

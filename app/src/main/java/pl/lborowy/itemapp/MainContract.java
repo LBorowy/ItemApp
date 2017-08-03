@@ -10,11 +10,16 @@ public interface MainContract {
         void onViewInitialized();
 
         void onOpenDialogPressed();
+
+        void onDialogDismissed();
+
     }
 
     interface View {
         void openAddDialog();
 
         void showList();
+
+        void refreshList();
     }
 }
