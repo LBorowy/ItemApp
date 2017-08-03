@@ -33,4 +33,8 @@ public class Item extends RealmObject{
     public int getId() {
         return id;
     }
+
+    public String getName() {
+        return name;
+    }
 }
