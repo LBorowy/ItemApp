@@ -29,11 +29,11 @@
         android:id="@+id/main_activity_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|end"
         android:layout_margin="16dp">
 
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/menu_item"
+            android:id="@+id/main_activity_menu_fab_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_add_black_24dp"

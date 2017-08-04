@@ -1,10 +1,8 @@
 package pl.lborowy.itemapp;
 
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import pl.lborowy.itemapp.Fragment.AddItemFragment;
@@ -39,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     }
 
-    @OnClick(R.id.menu_item)
+    @OnClick(R.id.main_activity_menu_fab_item)
     public void onFabPressed() {
         mainPresenter.onOpenDialogPressed();
     }
