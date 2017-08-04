@@ -13,6 +13,7 @@ import android.widget.EditText;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.realm.Realm;
 import pl.lborowy.itemapp.R;
 
 
@@ -24,6 +25,7 @@ public class AddBasementFragment extends DialogFragment implements AddBasementCo
     @BindView(R.id.add_basement_name)
     EditText name;
     private AddBasementContract.Presenter presenter;
+    private Realm realm;
 
 
     public static AddBasementFragment newInstance() {
@@ -43,17 +45,23 @@ public class AddBasementFragment extends DialogFragment implements AddBasementCo
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        presenter = new AddBasementPresenter(); // korzystanie z metod zadeklarowanych w interfejsie
+        presenter = new AddBasementPresenter(this); // korzystanie z metod zadeklarowanych w interfejsie
+        realm = Realm.getDefaultInstance();
     }
 
     @OnClick(R.id.add_basement_save_button)
     public void onSaveButtonClicked() {
-        presenter.onSaveClicked();
+        presenter.onSaveClicked(realm);
     }
 
     @Override
     public void closeDialog() {
         this.dismiss();
+    }
+
+    @Override
+    public String getBasementName() {
+        return null; // zwrocic z edittexta
     }
 
 }
