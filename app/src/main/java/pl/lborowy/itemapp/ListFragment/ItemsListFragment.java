@@ -31,7 +31,7 @@ public class ItemsListFragment extends Fragment {
     private Realm realm;
 
 
-    public static ItemsListFragment newIstance() {
+    public static ItemsListFragment newInstance() {
 
         return new ItemsListFragment();
     }

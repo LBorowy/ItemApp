@@ -30,15 +30,15 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         // cała logika idzie do Presentera
 
         mainPresenter = new MainPresenter(this); // 1 prezenter przypisany do całego Activity
-        itemsListFragment = ItemsListFragment.newIstance(); // inicjalizacja
+        itemsListFragment = ItemsListFragment.newInstance(); // inicjalizacja
         mainPresenter.onViewInitialized(); // inicjalizacja
 
         // adapter cd pokazywanie
-        ItemsListFragment itemsListFragment = ItemsListFragment.newIstance();
-        getFragmentManager()
-                .beginTransaction()
-                .replace(R.id.main_activity_container, itemsListFragment)
-                .commit();
+//        ItemsListFragment itemsListFragment = ItemsListFragment.newInstance();
+//        getFragmentManager()
+//                .beginTransaction()
+//                .replace(R.id.main_activity_container, itemsListFragment)
+//                .commit();
 
 
     }
@@ -72,6 +72,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public void onDialogDismiss() {
         // w momencie, kiedy dialog sie zamknie powinniśmy powiadomic presenter, ze zostal zamkniety
         // dialog -> Activity -> Presenter -> powrót do Activity (zamknij dialog)
-        mainPresenter.onDialogDismissed();
+        mainPresenter.notifyDialogClosed();
     }
 }

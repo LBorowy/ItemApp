@@ -11,7 +11,7 @@ public interface MainContract {
 
         void onOpenDialogPressed();
 
-        void onDialogDismissed();
+        void notifyDialogClosed();
 
     }
 

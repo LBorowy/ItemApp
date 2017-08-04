@@ -16,7 +16,6 @@ public class AddItemPresenter implements AddItemContract.Presenter {
     // logika dodawania
 
     private final AddItemContract.View view;
-    private Realm realm;
 
     public AddItemPresenter(AddItemContract.View view) {
         this.view = view;
@@ -31,6 +30,7 @@ public class AddItemPresenter implements AddItemContract.Presenter {
         // zapisywanie obiektu do Realmu
         final Item item = new Item(generateId(realm), name, description, new Date().getTime());
         saveItemToRealm(realm, item);
+        view.closeDialog();
 
         // taka forma zapisywania lub tak jak w metodzie saveItemToRealm
 //        realm.beginTransaction();
@@ -45,14 +45,14 @@ public class AddItemPresenter implements AddItemContract.Presenter {
 
 
         Number maxNumber = realm.where(Item.class).max("id");
-        if (maxNumber != null) {
-            return maxNumber.intValue() + 1;
-        }
-        else {
-            return Integer.MIN_VALUE;
-        }
+        return maxNumber != null ? maxNumber.intValue() + 1 : Integer.MIN_VALUE;
+//        if (maxNumber != null) {
+//            return maxNumber.intValue() + 1;
+//        } else {
+//            return Integer.MIN_VALUE;
+//        }
         // if inaczej
-//        return maxNumber != null ? maxNumber.intValue() + 1 : Integer.MIN_VALUE;
+
 
 //        Item itemMaxId = realm.where(Item.class).findFirst(); // zwraca element Item
 //        if (itemMaxId != null) {
@@ -73,7 +73,9 @@ public class AddItemPresenter implements AddItemContract.Presenter {
 //            }
 //        });
         // lambdą..
-        realm.executeTransaction(
-                innerRealm -> innerRealm.copyToRealm(item));
+//        realm.executeTransaction(
+//                innerRealm -> innerRealm.copyToRealm(item));
+
+        realm.executeTransactionAsync(innerRealm -> innerRealm.copyToRealm(item));
     }
 }

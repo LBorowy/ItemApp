@@ -25,7 +25,7 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void onDialogDismissed() {
-
+    public void notifyDialogClosed() {
+        view.refreshList();
     }
 }
