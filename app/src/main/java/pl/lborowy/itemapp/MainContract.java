@@ -9,14 +9,17 @@ public interface MainContract {
     interface Presenter {
         void onViewInitialized();
 
-        void onOpenDialogPressed();
+        void onOpenItemDialogPressed();
 
         void notifyDialogClosed();
 
+        void onOpenBasementDialogPressed();
     }
 
     interface View {
-        void openAddDialog();
+        void openItemAddDialog();
+
+        void openBasementAddDialog();
 
         void showList();
 

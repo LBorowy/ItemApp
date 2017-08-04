@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import pl.lborowy.itemapp.AddBasementFragment.AddBasementFragment;
 import pl.lborowy.itemapp.Fragment.AddItemFragment;
 import pl.lborowy.itemapp.ListFragment.ItemsListFragment;
 
@@ -38,14 +39,24 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @OnClick(R.id.main_activity_menu_fab_item)
-    public void onFabPressed() {
-        mainPresenter.onOpenDialogPressed();
+    public void onItemFabPressed() {
+        mainPresenter.onOpenItemDialogPressed();
+    }
+
+    @OnClick(R.id.main_activity_menu_fab_basement)
+    public void onBasementFabPressed() {
+        mainPresenter.onOpenBasementDialogPressed();
     }
 
     @Override
-    public void openAddDialog() {
+    public void openItemAddDialog() {
         // tu jest nasze View
         AddItemFragment.newInstance().show(getSupportFragmentManager(), "");
+    }
+
+    @Override // do View
+    public void openBasementAddDialog() {
+        AddBasementFragment.newInstance().show(getSupportFragmentManager(), "");
     }
 
     @Override
