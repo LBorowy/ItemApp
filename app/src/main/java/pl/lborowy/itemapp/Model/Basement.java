@@ -30,4 +30,9 @@ public class Basement extends RealmObject {
         this.items = items;
         this.name = name;
     }
+
+    public Basement(int id, String name) {
+        this.name = name;
+        this.id = id;
+    }
 }
