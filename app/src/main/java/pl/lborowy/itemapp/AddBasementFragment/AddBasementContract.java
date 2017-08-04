@@ -8,9 +8,11 @@ public interface AddBasementContract {
 
     interface View {
 
+        void closeDialog();
     }
 
     interface Presenter {
 
+        void onSaveClicked();
     }
 }
