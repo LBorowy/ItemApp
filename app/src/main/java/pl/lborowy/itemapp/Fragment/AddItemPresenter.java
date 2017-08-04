@@ -76,6 +76,8 @@ public class AddItemPresenter implements AddItemContract.Presenter {
 //        realm.executeTransaction(
 //                innerRealm -> innerRealm.copyToRealm(item));
 
-        realm.executeTransactionAsync(innerRealm -> innerRealm.copyToRealm(item));
+        realm.executeTransaction(innerRealm -> innerRealm.copyToRealm(item));
+
+
     }
 }
