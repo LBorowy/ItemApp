@@ -14,10 +14,6 @@ import pl.lborowy.itemapp.ListFragment.ItemsListFragment;
 public class MainActivity extends AppCompatActivity implements MainContract.View, AddDialogInterface{
 
 
-
-    @BindView(R.id.main_activity_fab)
-    FloatingActionButton floatingActionButton;
-
     private MainContract.Presenter mainPresenter;
     private ItemsListFragment itemsListFragment;
 
@@ -43,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     }
 
-    @OnClick(R.id.main_activity_fab)
+    @OnClick(R.id.menu_item)
     public void onFabPressed() {
         mainPresenter.onOpenDialogPressed();
     }
