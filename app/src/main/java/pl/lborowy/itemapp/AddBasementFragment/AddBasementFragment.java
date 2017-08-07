@@ -61,7 +61,7 @@ public class AddBasementFragment extends DialogFragment implements AddBasementCo
 
     @Override
     public String getBasementName() {
-        return null; // zwrocic z edittexta
+        return name.getText().toString().trim(); // zwrocic z edittexta
     }
 
 }
